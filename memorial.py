@@ -23,7 +23,7 @@ def gerar_memorial_descritivo(caminho_planilha, caminho_modelo, caminho_saida):
     proprietario = df.loc[0, 'Proprietario']
     area = df.loc[0, 'Area']
     matricula = df.loc[0, 'Matricula']
-    perimetro_total = df.loc[0, 'Perimetro Total']
+    perimetro = df.loc[0, 'Perimetro']
 
     # Geração do Documento com python-docx
     doc = Document(caminho_modelo)
@@ -38,8 +38,8 @@ def gerar_memorial_descritivo(caminho_planilha, caminho_modelo, caminho_saida):
             p.text = p.text.replace('[AREA]', str(area))
         if '[MATRICULA]' in p.text:
             p.text = p.text.replace('[MATRICULA]', str(matricula))
-        if '[PERIMETRO_TOTAL]' in p.text:
-            p.text = p.text.replace('[PERIMETRO_TOTAL]', str(perimetro_total))
+        if '[PERIMETRO]' in p.text:
+            p.text = p.text.replace('[PERIMETRO]', str(perimetro))
 
     # Adiciona a descrição do perímetro em parágrafos
     doc.add_paragraph()
