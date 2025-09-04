@@ -18,12 +18,17 @@ def gerar_memorial_descritivo(caminho_planilha, caminho_modelo, caminho_saida):
         print(f"Erro: O arquivo de planilha não foi encontrado em {caminho_planilha}")
         return
 
-    # Extração das informações gerais (assumindo que estão na primeira linha)
+    # Extração das informações gerais (buscando cada uma na sua devida linha)
     nome_imovel = df.loc[0, 'Nome Imóvel']
-    proprietario = df.loc[0, 'Proprietario']
+    proprietario = df.loc[4, 'Proprietario']
     area = df.loc[0, 'Area']
-    matricula = df.loc[0, 'Matricula']
-    perimetro = df.loc[0, 'Perimetro']
+    matricula = df.loc[2, 'Matricula']
+    perimetro = df.loc[2, 'Perimetro']
+    municipio = df.loc[0, 'Município']
+    uf = df.loc[0, 'UF']
+    comarca = df.loc[2, 'Comarca']
+    cpf = df.loc[4, 'CPF']
+    trt = df.loc[2, 'TRT']
 
     # Geração do Documento com python-docx
     doc = Document(caminho_modelo)
@@ -40,6 +45,16 @@ def gerar_memorial_descritivo(caminho_planilha, caminho_modelo, caminho_saida):
             p.text = p.text.replace('[MATRICULA]', str(matricula))
         if '[PERIMETRO]' in p.text:
             p.text = p.text.replace('[PERIMETRO]', str(perimetro))
+        if '[MUNICIPIO]' in p.text:
+            p.text = p.text.replace('[MUNICIPIO]', str(municipio))
+        if '[UF]' in p.text:
+            p.text = p.text.replace('[UF]', str(uf))
+        if '[COMARCA]' in p.text:
+            p.text = p.text.replace('[COMARCA]', str(comarca))
+        if '[CPF]' in p.text:
+            p.text = p.text.replace('[CPF]', str(cpf))
+        if '[TRT]' in p.text:
+            p.text = p.text.replace('[TRT]', str(trt))
 
     # Adiciona a descrição do perímetro em parágrafos
     doc.add_paragraph()
