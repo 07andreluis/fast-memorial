@@ -19,12 +19,12 @@ def gerar_memorial_descritivo(caminho_planilha, caminho_modelo, caminho_saida):
         return
 
     # Extração das informações gerais (buscando cada uma na sua devida linha)
-    nome_imovel = df.loc[0, 'Nome Imóvel']
+    nome_imovel = df.loc[0, 'Nome Imovel']
     proprietario = df.loc[4, 'Proprietario']
     area = df.loc[0, 'Area']
     matricula = df.loc[2, 'Matricula']
     perimetro = df.loc[2, 'Perimetro']
-    municipio = df.loc[0, 'Município']
+    municipio = df.loc[0, 'Municipio']
     uf = df.loc[0, 'UF']
     comarca = df.loc[2, 'Comarca']
     cpf = df.loc[4, 'CPF']
